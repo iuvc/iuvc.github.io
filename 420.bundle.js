@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkiuvc_template=self.webpackChunkiuvc_template||[]).push([[420],{2329:function(e,n,u){u.r(n),u.d(n,{default:function(){return a}});var t=u(6252);var r={name:"404"};var a=(0,u(3744).Z)(r,[["render",function(e,n,u,r,a,c){return(0,t.wg)(),(0,t.iD)("div",null,"404 Not Found")}]])}}]);
