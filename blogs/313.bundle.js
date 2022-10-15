@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkiuvc_template=self.webpackChunkiuvc_template||[]).push([[313],{9313:function(e,n,t){t.r(n),t.d(n,{default:function(){return c}});var u=t(6252);const r={};var c=(0,t(3744).Z)(r,[["render",function(e,n){return(0,u.wg)(),(0,u.iD)("div",null,"这是关于我的一些介绍")}]])}}]);
