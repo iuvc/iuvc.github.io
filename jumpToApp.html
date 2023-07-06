@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>跳转demo</title>
+</head>
+<body>
+<a href="sunriseddyn://payresult?jhPayId=5500&jhPayType=1&flag=false&tokenCode=793735ABB1D648058AEFCBF6936E1CE0">常规跳转</a>
+  <input id="inputEl" value="https://www.sunriseyny.cn/ulink/?jhPayId=5060&jhPayType=1&flag=false&tokenCode=793735ABB1D648058AEFCBF6936E1CE0" style="width: 500px;height: 100px;"/>
+  <button id="openHref">点击跳转</a>
+  <script>
+    document.getElementById('openHref').addEventListener('click', function(e){
+	  window.location =  document.getElementById('inputEl').value
+    })
+  </script>
+</body>
+</html>
