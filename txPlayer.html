@@ -5,12 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>播放器</title>
   <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
     .playlist>div{
+      margin-top: 30px;
+      /* display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap; */
+    }
+    .playlist>div>div{
+      padding: 0 20px;
       display: flex;
       align-items: center;
+      /* justify-content: center; */
+      flex-wrap: wrap;
+      
+    }
+    .playlist>div>div:last-child{
+      margin-top: 20px;
     }
     .playlist>div label{
       font-size: 20px;
+      flex: 0 0 120px;
+      text-align: justify;
     }
     .playlist>div input,.playlist>div button{
       height: 40px;
@@ -21,11 +41,10 @@
       border-width: 1px;
     }
     .playlist>div input{
-      width: 160px;
+      flex-grow:  1;
     }
     .playlist>div button{
-      width: 80px;
-      /* font-size: 24px; */
+      flex: 0 0 80px;
     }
     .playlist>div button+button,.playlist>div input+button{
       margin-left: 20px;
@@ -42,11 +61,15 @@
     let allDomStr = ''
     chanelList.forEach((item,index)=>{
       allDomStr +=`<div>
-    <label>播放渠道${index+1}：</label>
-    <input id="input${index}" type="text" />
-    <button id="btn${index}">前往</button>
-    <button id="clear${index}">清空</button>
-  </div>`
+        <div>
+          <label>播放渠道${index+1}：</label>
+          <input id="input${index}" type="text" />
+        </div>
+        <div>
+          <button id="btn${index}">前往</button>
+          <button id="clear${index}">清空</button>
+        </div>
+      </div>`
     })
     allDomStr = `<div class="playlist">${allDomStr}</div>`
     console.log(allDomStr)
