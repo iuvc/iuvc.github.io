@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>播放器</title>
+  <style>
+    .playlist>div{
+      display: flex;
+      align-items: center;
+    }
+    .playlist>div label{
+      font-size: 20px;
+    }
+    .playlist>div input,.playlist>div button{
+      height: 40px;
+      line-height: 32px;
+      font-size: 20px;
+      box-sizing: border-box;
+      padding: 3px 5px;
+      border-width: 1px;
+    }
+    .playlist>div input{
+      width: 160px;
+    }
+    .playlist>div button{
+      width: 80px;
+      /* font-size: 24px; */
+    }
+    .playlist>div button+button,.playlist>div input+button{
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <script type="text/javascript">
+    let chanelList = [
+      'https://jx.jsonplayer.com/player/?url=',
+      'https://jx.playerjy.com/?url='
+    ]
+    let playList = []
+    let allDomStr = ''
+    chanelList.forEach((item,index)=>{
+      allDomStr +=`<div>
+    <label>播放渠道${index+1}：</label>
+    <input id="input${index}" type="text" />
+    <button id="btn${index}">前往</button>
+    <button id="clear${index}">清空</button>
+  </div>`
+    })
+    allDomStr = `<div class="playlist">${allDomStr}</div>`
+    console.log(allDomStr)
+    document.body.innerHTML=(allDomStr)
+    chanelList.forEach((item,index)=>{
+      let buttonDom = document.getElementById(`btn${index}`)
+      let clearDom = document.getElementById(`clear${index}`)
+      let inputDom = document.getElementById(`input${index}`)
+      clearDom.onclick = ()=>{
+        inputDom.value = ''
+      }
+      buttonDom.onclick = ()=>{
+        console.log(inputDom.value)
+        window.open(inputDom.value)
+      }
+    })
+  </script>
+</body>
+</html>
