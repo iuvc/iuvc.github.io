@@ -9,81 +9,90 @@
       margin: 0;
       padding: 0;
     }
-    .playlist>div{
-      margin-top: 30px;
-      /* display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap; */
+    .playlist{
+      text-align: center;
     }
-    .playlist>div>div{
-      padding: 0 20px;
+    .playlist>.clearbtn{
+      margin-top: 20px;
       display: flex;
       align-items: center;
-      /* justify-content: center; */
+      justify-content: center;
       flex-wrap: wrap;
-      
     }
-    .playlist>div>div:last-child{
-      margin-top: 20px;
+    .playlist>textarea{
+      width: 90%;
+      height: 120px;
+      margin: 60px auto 0;
+      padding: 10px 15px;
+      box-sizing: border-box;
+      box-shadow: 0 0 0 1px #dcdfe6 inset;
+      border: none;
+      outline: none;
     }
-    .playlist>div label{
-      font-size: 20px;
-      flex: 0 0 120px;
-      text-align: justify;
-    }
-    .playlist>div input,.playlist>div button{
-      height: 40px;
-      line-height: 32px;
+    .playlist>.clearbtn button{
+      height: 50px;
+      line-height: 42px;
       font-size: 20px;
       box-sizing: border-box;
       padding: 3px 5px;
-      border-width: 1px;
+      border: 1px solid #409eff;
+      background-color: #409eff;
+      color: #fff;
+      border-radius: 4px;
     }
-    .playlist>div input{
-      flex-grow:  1;
+    .playlist>.clearbtn button{
+      flex: 0 0 160px;
     }
-    .playlist>div button{
-      flex: 0 0 80px;
+    .playlist>.playbtn{
+      margin-top: 30px;
     }
-    .playlist>div button+button,.playlist>div input+button{
-      margin-left: 20px;
+    .playlist>.playbtn button{
+      padding: 6px 15px;
+      border: 1px solid #409eff;
+      background-color: #409eff;
+      color: #fff;
+      border-radius: 4px;
+      font-size: 16px;
+      margin-right: 20px;
     }
   </style>
 </head>
 <body>
   <script type="text/javascript">
     let chanelList = [
-      'https://jx.jsonplayer.com/player/?url=',
-      'https://jx.playerjy.com/?url='
+      {
+        name:'七七七',
+        url:'https://jx.jsonplayer.com/player/?url='
+      },{
+        name:'B站综合',
+        url:'https://jx.playerjy.com/?url='
+      },{
+        name:'咸鱼云',
+        url:'https://jx.xyflv.cc/?url='
+      }
     ]
     let playList = []
     let allDomStr = ''
     chanelList.forEach((item,index)=>{
-      allDomStr +=`<div>
-        <div>
-          <label>播放渠道${index+1}：</label>
-          <input id="input${index}" type="text" />
-        </div>
-        <div>
-          <button id="btn${index}">前往</button>
-          <button id="clear${index}">清空</button>
-        </div>
-      </div>`
+      allDomStr +=`
+        <button id="btn${index}">${item.name}</button>
+      `
     })
-    allDomStr = `<div class="playlist">${allDomStr}</div>`
-    console.log(allDomStr)
+    allDomStr = `<div class="playlist">
+      <textarea id="playUrl" placeholder="请输入地址" ></textarea>
+      <div class="clearbtn"><button id="clearBtn">清空地址</button></div>
+      <div class="playbtn">${allDomStr}</div>
+    </div>`
     document.body.innerHTML=(allDomStr)
+    let inputDom = document.getElementById(`playUrl`)
+    let clearDom = document.getElementById(`clearBtn`)
+    clearDom.onclick = ()=>{
+      inputDom.value = ''
+    }
     chanelList.forEach((item,index)=>{
       let buttonDom = document.getElementById(`btn${index}`)
-      let clearDom = document.getElementById(`clear${index}`)
-      let inputDom = document.getElementById(`input${index}`)
-      clearDom.onclick = ()=>{
-        inputDom.value = ''
-      }
       buttonDom.onclick = ()=>{
-        // console.log(inputDom.value)
-        window.open(item+inputDom.value)
+        window.open(item.url+inputDom.value)
       }
     })
   </script>
